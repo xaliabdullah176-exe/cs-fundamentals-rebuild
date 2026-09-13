@@ -337,6 +337,15 @@ public:
             cout << *(arr + i) << " ";
         }
     }
+    void MaxPossibleSubArrays(){};
+    int SumOfElements(){};
+    void Swap1_bubbleSort(){};
+    void Swap2_InsertionSort(){};
+    void Swap3_SelectionSort(){};
+    int BinarySearch(){};
+    void rightShift(){};
+    void RotateArray(){};
+
 };
 
 int main()
@@ -417,4 +426,5 @@ int main()
     return 0;
 
     // Alhamdulillah Array List Almost complete
+    // ArrAY List ill be back with some more interesing functions.
 }
