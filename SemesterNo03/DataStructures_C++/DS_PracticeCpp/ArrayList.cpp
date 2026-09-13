@@ -230,7 +230,7 @@ public:
     {
         size = 0;
         TotalCapacity = 5;
-        delete [] arr;
+        delete[] arr;
         arr = new int[TotalCapacity];
     }
 
@@ -300,15 +300,33 @@ public:
                     }
                 }
             }
-            
+            return duplicatesFound;
         }
         else
         {
             cout << "Array List is Empty Please insert some Elements to start Comparisons" << endl;
+            return 0;
         }
     }
-    void updateArray()
+
+    void updateArray(int oldValue, int newValue)
     {
+        int index = linearSearch(oldValue);
+        if (!isEmpty())
+        {
+            if (index != -1)
+            {
+                arr[index] = newValue;
+            }
+            else
+            {
+                cout << "Data Not Found " << endl;
+            }
+        }
+        else
+        {
+            cout << "The List is Empty " << endl;
+        }
     }
 
     // Display Function
@@ -328,42 +346,75 @@ int main()
 
     ArrayList Array;
     Array.insert(10);
+    Array.insert(30);
+    Array.insert(10);
+    Array.insert(10);
+    Array.insert(10);
     Array.insert(20);
     Array.insert(30);
+    Array.insert(40);
     Array.insert(40);
     Array.insert(50);
     Array.insert(50);
 
-    Array.display();
+    // Array.display();
 
     cout << endl;
 
     // Array.clearArray();
 
-    int index = Array.linearSearch(40);
-    if (index == -1)
-    {
-        cout << "Data Not Found " << endl;
-    }
-    else
-    {
-        cout << "Data Fount at the index " << index << endl;
-    }
-    cout << endl;
+    //     int index = Array.linearSearch(40);
+    //     if (index == -1)
+    //     {
+    //         cout << "Data Not Found " << endl;
+    //     }
+    //     else
+    //     {
+    //         cout << "Data Fount at the index " << index << endl;
+    //     }
+    //     cout << endl;
 
-    Array.removeElements(50);
+    //     //Array.removeElements(50);
 
-    cout << endl;
+    //     cout << endl;
 
-    Array.removeElements(10);
+    //  //   Array.removeElements(10);
 
-    cout << endl;
+    //     cout << endl;
 
-    Array.display();
+    //     Array.display();
     cout << endl;
     cout << "The TotalCapacity of Array is: " << Array.getTotalCapacity();
     cout << endl;
     cout << "The TotalCapacity of Array is: " << Array.getSizeOfArray();
+    cout << endl;
+    // Array.clearArray();
+    Array.updateArray(40, -999);
+
+    Array.display();
+    cout << endl;
+    cout << endl;
+    
+    int duplicatesFound = Array.removeDuplicates();
+
+    if(duplicatesFound == 0)
+    {
+        cout<<"No, Duplicates Exist in the array so it is a Set (A unique Array)"<<endl;
+    }
+    else
+    {
+        cout<<"Array After the Removal of duplicates is "<<endl;
+        Array.display();
+    }
+
+    cout<<endl;
+    Array.clearArray();
+    Array.removeDuplicates();
+    Array.display();
+
+
 
     return 0;
+
+    // Alhamdulillah Array List Almost complete
 }
