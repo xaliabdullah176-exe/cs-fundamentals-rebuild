@@ -199,53 +199,124 @@ public:
         arr = temp;
         TotalCapacity *= 2;
     }
-    // Display Function
-    void display()
-    {
-        for (int i = 0; i < size; i++)
-        {
-            cout << *(arr + i) << " ";
-        }
-    }
-    //Checks if the Array is Empty;
+
+    // Checks if the Array is Empty;
     bool isEmpty()
     {
-     if(size == 0)
-         return true;
-    return false;
+        if (size == 0)
+            return true;
+        return false;
     }
     // LinearSearch Algorithm
     int linearSearch(int targetValue)
     {
-         if(isEmpty())
-         {
-            cout<<"The Array is Empty Please Recheck and Add Elements "<<endl;
+        if (isEmpty())
+        {
+            cout << "The Array is Empty Please Recheck and Add Elements " << endl;
             return -2;
-         }
-         else
-         {
-            for(int i = 0; i<size; i++)
+        }
+        else
+        {
+            for (int i = 0; i < size; i++)
             {
-                if (arr[i] = targetValue)
-                    return i;    
+                if (arr[i] == targetValue)
+                    return i;
             }
             return -1;
-         }
+        }
     }
 
     void clearArray()
     {
         size = 0;
         TotalCapacity = 5;
+        delete [] arr;
         arr = new int[TotalCapacity];
     }
-    
+
+    // Getters for the Total and size;
+    int getTotalCapacity()
+    {
+        return TotalCapacity;
+    }
+
+    int getSizeOfArray()
+    {
+        return size;
+    }
+
     void removeElements(int element)
     {
-        if(!isEmpty())
+        int index = linearSearch(element);
+        if (!isEmpty())
         {
-            int index = linearSearch(element);
+            if (index == -1)
+            {
+                cout << "There is no Element Found to be deleted....!!!" << endl;
+            }
 
+            else if (index == size - 1)
+            {
+                cout << endl;
+                cout << "deleting from the index " << index << endl;
+                size--;
+            }
+            else
+            {
+
+                for (int i = index; i < size - 1; i++)
+                {
+                    arr[i] = arr[i + 1];
+                }
+                cout << endl;
+                cout << "deleting from the index " << index << endl;
+
+                size--;
+            }
+        }
+        else
+        {
+            cout << "Nothing to Delete Please Add Elements in the Array" << endl;
+        }
+    }
+    int removeDuplicates()
+    {
+        if (!isEmpty())
+        {
+            int duplicatesFound = 0;
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = i + 1; j < size; j++)
+                {
+                    if (arr[i] == arr[j])
+                    {
+                        for (int k = j; k < size - 1; k++)
+                        {
+                            arr[k] = arr[k + 1];
+                        }
+                        size--;
+                        j--;
+                        duplicatesFound++;
+                    }
+                }
+            }
+            
+        }
+        else
+        {
+            cout << "Array List is Empty Please insert some Elements to start Comparisons" << endl;
+        }
+    }
+    void updateArray()
+    {
+    }
+
+    // Display Function
+    void display()
+    {
+        for (int i = 0; i < size; i++)
+        {
+            cout << *(arr + i) << " ";
         }
     }
 };
@@ -262,14 +333,37 @@ int main()
     Array.insert(40);
     Array.insert(50);
     Array.insert(50);
-        
+
     Array.display();
 
-    cout<<endl;
-   
-    int index = Array.linearSearch(30);
-    
-    cout << index;
+    cout << endl;
+
+    // Array.clearArray();
+
+    int index = Array.linearSearch(40);
+    if (index == -1)
+    {
+        cout << "Data Not Found " << endl;
+    }
+    else
+    {
+        cout << "Data Fount at the index " << index << endl;
+    }
+    cout << endl;
+
+    Array.removeElements(50);
+
+    cout << endl;
+
+    Array.removeElements(10);
+
+    cout << endl;
+
+    Array.display();
+    cout << endl;
+    cout << "The TotalCapacity of Array is: " << Array.getTotalCapacity();
+    cout << endl;
+    cout << "The TotalCapacity of Array is: " << Array.getSizeOfArray();
 
     return 0;
 }
