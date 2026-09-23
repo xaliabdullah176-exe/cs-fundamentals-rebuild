@@ -1,90 +1,90 @@
-// #include<iostream>
-// using namespace std;
-// class Queue{
-//    int *arr;
-//    int size, rear, front;
-//     int count;
-//    public:
-//      Queue(int size=5){
-//           this->size = size;
-// 	arr = new int[size];
-// 	front=rear=-1;
-//          count = 0;
-//      }
-// 	bool isEmpty()
-// 	{
-// 		return count==0;
-// 	}
-// 	bool isFull()
-// 	{
-// 		return count==size;
-// 	}
-// 	void enqueue(int data)
-// 	{
-// 		if(isFull())
-// 		{
-// 			cerr<<"Queue overflow"<<endl;
-// 			return;
-// 		}
-// 		if(front == -1)
-//         {
-//             front = 0;
-//         }
-//         rear = (rear+1)%size;
-// 		arr[rear] = data;
-//         count++;
-// 	}
-//     void dequeue()
-//     {
-//         if(isEmpty())
-// 		{
-// 			cerr<<"Queue underflow"<<endl;
-// 			return;
-// 		}
-//         front = (front+1)%size;
-//         count--;
-//     }
-// 	void display()
-// 	{
-// 		if(isEmpty())
-// 		{
-// 			cerr<<"Queue underflow"<<endl;
-// 			return;
-// 		}
-// 		cout<<"Queue : [";
-//         int index = front;
-// 		for(int i=1;i<count;i++)
-// 		{
-// 			cout<<arr[index]<<" , ";
-//             index = (index + 1)%size;
-// 		}
-// 		cout<<arr[index]<<"]"<<endl;
-// 	}
+#include<iostream>
+using namespace std;
+class Queue{
+   int *arr;
+   int size, rear, front;
+    int count;
+   public:
+     Queue(int size=5){
+          this->size = size;
+	arr = new int[size];
+	front=rear=-1;
+         count = 0;
+     }
+	bool isEmpty()
+	{
+		return count==0;
+	}
+	bool isFull()
+	{
+		return count==size;
+	}
+	void enqueue(int data)
+	{
+		if(isFull())
+		{
+			cerr<<"Queue overflow"<<endl;
+			return;
+		}
+		if(front == -1)
+        {
+            front = 0;
+        }
+        rear = (rear+1)%size;
+		arr[rear] = data;
+        count++;
+	}
+    void dequeue()
+    {
+        if(isEmpty())
+		{
+			cerr<<"Queue underflow"<<endl;
+			return;
+		}
+        front = (front+1)%size;
+        count--;
+    }
+	void display()
+	{
+		if(isEmpty())
+		{
+			cerr<<"Queue underflow"<<endl;
+			return;
+		}
+		cout<<"Queue : [";
+        int index = front;
+		for(int i=1;i<count;i++)
+		{
+			cout<<arr[index]<<" , ";
+            index = (index + 1)%size;
+		}
+		cout<<arr[index]<<"]"<<endl;
+	}
           
     
-//      ~Queue(){
-// 	delete [] arr;
-// 	}
-// };
+     ~Queue(){
+	delete [] arr;
+	}
+};
 
-// int main(){
-// 	Queue q;
-// 	q.enqueue(5);
-// 	q.enqueue(55);
-// 	q.enqueue(51);
-// 	q.enqueue(501);
-// 	q.enqueue(15);
-//     q.dequeue();
-// 	q.enqueue(50);
-//     q.dequeue();
-//     q.dequeue();
-//     q.enqueue(100);
-//     while(!q.isEmpty()){
-//     	q.display();
-//         q.dequeue();
-//     }
-//    return 0;
-// }
+int main(){
+	Queue q;
+	q.enqueue(5);
+	q.enqueue(55);
+	q.enqueue(51);
+	q.enqueue(501);
+	q.enqueue(15);
+    q.dequeue();
+	q.enqueue(50);
+    q.dequeue();
+    q.dequeue();
+    q.enqueue(100);
+    while(!q.isEmpty()){
+    	q.display();
+        q.dequeue();
+    }
+   return 0;
+}
 
 
 

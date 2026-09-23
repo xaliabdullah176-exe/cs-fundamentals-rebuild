@@ -91,8 +91,7 @@
 //         while(temp->next->next!=NULL)
 //         {
 //             temp = temp -> next;
-           
-            
+
 //         }
 //          delete temp;
 
@@ -132,48 +131,76 @@
 //     return 0;
 // }
 
-
-
-
-// Linked List New Implementation: 
+// Linked List New Implementation:
 
 #include <iostream>
 using namespace std;
 
-class LinkedList{
-    
-    class Node{
-            int data;
-            Node* next;
-    public:
-            Node()
-            {
-                data = 0;
-                next = NULL;
-            }
-            Node(int data)
-            {
-                this->data = data;
-                next = NULL;
-            }
-    };
-    
-    Node* head;
-    Node* tail;
-    
-    public:
-   LinkedList()
-   {
-    Node* NewNode = head;
-   } 
+class LinkedList
+{
 
+    class Node
+    {
+    public:
+        int data;
+        Node *next;
+
+        Node()
+        {
+            data = 0;
+            next = NULL;
+        }
+        Node(int data, Node *next = NULL)
+        {
+            this->data = data;
+            this->next = next;
+        }
+    };
+
+    Node *head;
+    Node *tail;
+
+public:
+    LinkedList()
+    {
+        head = tail = NULL;
+    }
+
+    void push_front(int data)
+    {
+        Node *newNode = new Node(data);
+        if (head == NULL)
+        {
+            head = tail = newNode;
+        }
+        newNode->next = head;
+        head = newNode;
+    }
+
+    void push_back(int data)
+    {
+        Node *newNode = new Node(data);
+    }
+
+    void print_list()
+    {
+        if (head == NULL)
+        {
+            cout << head->data;
+        }
+        Node *curr = head;
+        while (curr != tail)
+        {
+            cout << curr->data << " -> ";
+            curr = curr->next;
+        }
+    }
 };
 
-int main() {
+int main()
+{
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-
-    
 
     return 0;
 }
