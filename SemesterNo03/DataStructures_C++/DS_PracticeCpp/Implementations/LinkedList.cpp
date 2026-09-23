@@ -172,14 +172,34 @@ public:
         if (head == NULL)
         {
             head = tail = newNode;
+            return;
         }
+        else{
         newNode->next = head;
-        head = newNode;
+        head = newNode;}
     }
 
     void push_back(int data)
     {
         Node *newNode = new Node(data);
+        if (head == NULL)
+        {
+            head = tail = newNode;
+            return;
+        }
+        else{
+        tail->next = newNode;
+        tail = newNode;
+        }
+    }
+
+    void pop_front()
+    {
+        if(head == NULL)
+        {
+            cout<<"LL is Empty \n"<<endl;
+        }
+        
     }
 
     void print_list()
@@ -194,6 +214,7 @@ public:
             cout << curr->data << " -> ";
             curr = curr->next;
         }
+        cout << "NULL" << endl;
     }
 };
 
