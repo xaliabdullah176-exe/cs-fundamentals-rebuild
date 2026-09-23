@@ -142,9 +142,30 @@ using namespace std;
 
 class LinkedList{
     
-    struct Node{
-
+    class Node{
+            int data;
+            Node* next;
+    public:
+            Node()
+            {
+                data = 0;
+                next = NULL;
+            }
+            Node(int data)
+            {
+                this->data = data;
+                next = NULL;
+            }
     };
+    
+    Node* head;
+    Node* tail;
+    
+    public:
+   LinkedList()
+   {
+    Node* NewNode = head;
+   } 
 
 };
 
